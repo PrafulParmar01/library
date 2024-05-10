@@ -10,33 +10,9 @@ android {
 
     defaultConfig {
         minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    publishing {
-        singleVariant("staging") {
-            withSourcesJar()
-            withJavadocJar()
-        }
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
-        }
     }
 
     buildTypes {
-        create("staging") {
-            isMinifyEnabled = false
-            multiDexEnabled = true
-
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-
         release {
             isMinifyEnabled = false
             multiDexEnabled = true
@@ -67,6 +43,7 @@ publishing {
             groupId = "com.praful.demolibrary"
             artifactId = "library"
             version = "1.0"
+            artifact("$buildDir/outputs/aar/${"library"}-release.aar")
         }
     }
     repositories {

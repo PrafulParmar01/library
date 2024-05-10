@@ -18,16 +18,6 @@ android {
     }
 
     buildTypes {
-        create("staging") {
-            isMinifyEnabled = false
-            multiDexEnabled = true
-
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-
         release {
             isMinifyEnabled = false
             multiDexEnabled = true
@@ -55,7 +45,7 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     //implementation(project(mapOf("path" to ":DemoLibrary")))
-    //implementation("com.praful.demolibrary:library:1.0")
-    implementation(project(":library"))
+    implementation("com.praful.demolibrary:library:1.0")
+   implementation(project(":library"))
 
 }
